@@ -7,6 +7,7 @@
 
     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        
         <div class="sm:flex sm:items-start">
           <div class="mt-3 text-center w-full sm:text-left">
             <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
@@ -17,6 +18,7 @@
                 Enter name of layer and click submit
               </p>
             </div>
+            <p class="text-center text-red-500" id="error"></p>
             <label class="block mt-4">
               <input id="layer_name" class="w-full p-2 border rounded-md border-gray-400 border-opacity-50 border-current" placeholder="Layer 1">
             </label>
@@ -58,7 +60,12 @@ export default {
     
     function addlayers() { 
         var layer_name = document.getElementById("layer_name").value
-        if(layer_name == ''){}
+        if(layer_name == ''){
+          document.getElementById("layer_name").style.border = "2px solid red"
+          setTimeout(()=>{
+					document.getElementById("layer_name").style.border = "2px solid #aaabac"
+				}, 3000);
+        }
         else{
             store.commit("addlayer", {name: layer_name})
             document.getElementById("layer_name").value = ''
@@ -69,7 +76,7 @@ export default {
   },
   data() {
     return {
-        layer_name: ''
+        layer_name: '',
     };
   }, 
   methods: {

@@ -42,7 +42,6 @@
 
 <script>
 import {useStore} from 'vuex'
-import {computed} from 'vue'
 export default {
   props: {
     size: {
@@ -58,7 +57,12 @@ export default {
     
     function editlayers() { 
       var layer_name = document.getElementById("newlayer_name").value
-      if(layer_name == ''){}
+      if(layer_name == ''){
+         document.getElementById("newlayer_name").style.border = "2px solid red"
+          setTimeout(()=>{
+					document.getElementById("newlayer_name").style.border = "2px solid #aaabac"
+				}, 3000);
+      }
       else{    
           store.commit("editlayer", [props.index, {name: layer_name}])
           document.getElementById("newlayer_name").value = ''
