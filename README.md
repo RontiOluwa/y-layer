@@ -1,5 +1,3 @@
-# onedisk-dashboard
-
 ## Project setup
 ```
 npm install
