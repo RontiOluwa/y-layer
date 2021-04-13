@@ -14,6 +14,7 @@
 
       <Design />
     </section>
+    <AddLayer v-show="addlayer" @close="closeModal"/>
   </main>
 </template>
 
@@ -21,18 +22,28 @@
 import Design from "./components/Design.vue";
 import Layers from "./components/Layers.vue";
 import NavBar from "./components/NavBar.vue";
+import AddLayer from "./components/AddLayer.vue";
 
 export default {
   name: "App",
+  data(){
+    return{
+      addlayer: false
+    }
+  },
   components: {
     Design,
     NavBar,
+    AddLayer,
     Layers
   },
-
   methods: {
     createLayer() {
-      this.$refs.layers.innerHTML = `<div>Hi, I am a layer 👋🏼</div>`;
+      this.addlayer = true
+    },
+    closeModal() {
+      this.addlayer = false
+      this.editlayer = false
     },
   },
 };
