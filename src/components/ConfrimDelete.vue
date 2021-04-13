@@ -41,11 +41,12 @@ export default {
     color2: {},
     index: String
   },
-  setup(props) {
+  setup(props, context) {
     const store = useStore();
     
      function deleteLayer() { 
       store.commit("deletelayer", props.index)
+      context.emit('close')
      }
 
     return{deleteLayer}

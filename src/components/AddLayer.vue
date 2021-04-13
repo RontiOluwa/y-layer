@@ -56,7 +56,6 @@ export default {
   },
   setup() {
     const store = useStore();
-    const layer = computed(() => store.state.layer)
     
     function addlayers() { 
         var layer_name = document.getElementById("layer_name").value

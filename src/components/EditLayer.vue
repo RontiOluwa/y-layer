@@ -52,7 +52,7 @@ export default {
     color2: {},
     index: String
   },
-  setup(props) {
+  setup(props, context) {
     const store = useStore();
     
     function editlayers() { 
@@ -66,6 +66,7 @@ export default {
       else{    
           store.commit("editlayer", [props.index, {name: layer_name}])
           document.getElementById("newlayer_name").value = ''
+          context.emit('close')
       }
     }
 
