@@ -77,7 +77,7 @@ export default {
         this.$emit('close')
     },
     reset(){
-      document.getElementById("layer_name").value = ''
+      document.getElementById("newlayer_name").value = ''
     }
   }
 };
