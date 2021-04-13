@@ -24,6 +24,7 @@
     </section>
     <AddLayer v-show="addlayer" @close="closeModal"/>
     <EditLayer v-show="editlayer" @close="closeModal" :index="index"/>
+    <ConfrimDelete v-show="confirmdelete" @close="closeModal" :index="index"/>
   </main>
 </template>
 
@@ -33,6 +34,7 @@ import Layers from "./components/Layers.vue";
 import NavBar from "./components/NavBar.vue";
 import AddLayer from "./components/AddLayer.vue";
 import EditLayer from "./components/EditLayer.vue";
+import ConfrimDelete from "./components/ConfrimDelete.vue";
 import {useStore} from 'vuex'
 import {computed} from 'vue'
 export default {
@@ -42,7 +44,8 @@ export default {
       addlayer: false,
       editlayer: false,
       layer: [],
-      index: ''
+      index: '',
+      confirmdelete: false
     }
   },
   components: {
@@ -50,17 +53,14 @@ export default {
     NavBar,
     AddLayer,
     EditLayer,
+    ConfrimDelete,
     Layers
   },
   setup() {
     const store = useStore();
     const layer = computed(() => store.state.layer)
-   
-     function deleteLayer(index) { 
-      store.commit("deletelayer", index)
-     }
-
-    return{layer, deleteLayer}
+  
+    return{layer}
   },
   methods: {
     createLayer() {
@@ -68,11 +68,16 @@ export default {
     },
     closeModal() {
       this.addlayer = false
+      this.confirmdelete = false
       this.editlayer = false
     },
     editlayeritem(index){
       this.editlayer = true
       this.index = index
+    },
+    deleteLayer(index){
+      this.index = index
+      this.confirmdelete = true
     }
   },
 };
