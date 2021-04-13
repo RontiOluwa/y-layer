@@ -23,6 +23,7 @@
       <Design />
     </section>
     <AddLayer v-show="addlayer" @close="closeModal"/>
+    <EditLayer v-show="editlayer" @close="closeModal" :index="index"/>
   </main>
 </template>
 
@@ -31,6 +32,7 @@ import Design from "./components/Design.vue";
 import Layers from "./components/Layers.vue";
 import NavBar from "./components/NavBar.vue";
 import AddLayer from "./components/AddLayer.vue";
+import EditLayer from "./components/EditLayer.vue";
 import {useStore} from 'vuex'
 import {computed} from 'vue'
 export default {
@@ -38,13 +40,16 @@ export default {
   data(){
     return{
       addlayer: false,
+      editlayer: false,
       layer: [],
+      index: ''
     }
   },
   components: {
     Design,
     NavBar,
     AddLayer,
+    EditLayer,
     Layers
   },
   setup() {
@@ -65,6 +70,10 @@ export default {
       this.addlayer = false
       this.editlayer = false
     },
+    editlayeritem(index){
+      this.editlayer = true
+      this.index = index
+    }
   },
 };
 </script>
