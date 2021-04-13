@@ -12,7 +12,10 @@ export default createStore({
       console.log(state.layer)
       state.layer[index[0]] = index[1]
       console.log(state.layer)
-    }
+    },
+    deletelayer(state, index){
+      state.layer.splice(index, 1);
+    },
   },
   actions: {
   },

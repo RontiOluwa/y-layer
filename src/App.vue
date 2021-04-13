@@ -7,7 +7,7 @@
       <section
         class="w-full h-full relative z-10 scrollbar text-center text-none overflow-auto"
       >
-        <button @click="createLayer">add layer</button>
+        <button @click="createLayer">Click to add layer</button>
 
         <div ref="layers" class="mt-4" v-for="(item, index) in layer" v-bind:key="item.name">
           <div class="mt-2 bg-gray-200 p-6 m-2 w-10/12 mx-auto h-14"> 
